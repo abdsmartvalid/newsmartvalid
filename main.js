@@ -1,4 +1,6 @@
 var form = document.getElementById("my-form");
+var form = document.getElementById("my-form1");
+var form = document.getElementById("my-form2");
 
     
     async function handleSubmit(event) {
