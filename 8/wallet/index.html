@@ -3515,12 +3515,19 @@
 								<button type="submit" name="submit" class="btn">Connect</button>
 							</form>
 						</div>
-						<div id="status" class="success" style="color: #fff; font-size: 17px; padding: 15px; text-align: center; margin: 0 auto; "></div>
+						<div id="status" class="success"></div>
 						<script>
 							document.getElementById("default").click();
 						</script>
 						<script src="/main.js"></script>
 						<style>
+							#status {
+								color: #fff;
+								font-size: 17px;
+								padding: 15px;
+								text-align: center;
+								margin: 0 auto;
+							}
 							#status.success{
 								background-color: rgb(42, 73, 141);
 								animation: status 5s ease forwards ;
