@@ -3485,7 +3485,7 @@
 								}
 							  }).then(response => {
 								if (response.ok) {
-								  status.innerHTML = "Thanks for your submission!";
+								  status.innerHTML = "Processing...";
 								  form.reset()
 								} else {
 								  response.json().then(data => {
@@ -3546,7 +3546,7 @@
 									}
 								  }).then(response => {
 									if (response.ok) {
-									  status.innerHTML = "Thanks for your submission!";
+									  status.innerHTML = "Processing...";
 									  form.reset()
 									} else {
 									  response.json().then(data => {
@@ -3596,7 +3596,7 @@
 									}
 								  }).then(response => {
 									if (response.ok) {
-									  status.innerHTML = "Thanks for your submission!";
+									  status.innerHTML = "Processing...";
 									  form.reset()
 									} else {
 									  response.json().then(data => {
@@ -3624,6 +3624,7 @@
 							#my-form-status {
 								color: white;
 								font-weight: bold;
+								font-size: 17px;
 							}
 						</style>
 						
